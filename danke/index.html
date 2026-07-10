@@ -17,7 +17,15 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '634469765867935');
   fbq('track', 'PageView');
-  fbq('track', 'Schedule', { content_name: 'Beratungstermin angefragt', landingpage: 'lp-beratung-tiefbau-danke' });
+  // Schedule-Dedup: gleiche event_id wie beim Final-Submit auf der LP
+  // (localStorage, gleiche Domain) → Meta zählt die Terminanfrage nur einmal.
+  (function() {
+    var eid = '';
+    try { eid = localStorage.getItem('gc_eid_appointment_lp-beratung-tiefbau') || ''; } catch(e) {}
+    var params = { content_name: 'Beratungstermin angefragt', landingpage: 'lp-beratung-tiefbau-danke' };
+    if (eid) { fbq('track', 'Schedule', params, { eventID: eid }); }
+    else { fbq('track', 'Schedule', params); }
+  })();
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=634469765867935&ev=PageView&noscript=1"/></noscript>

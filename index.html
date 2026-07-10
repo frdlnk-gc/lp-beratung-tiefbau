@@ -1642,6 +1642,208 @@
     </div>
   </section>
 
+  <!-- TESTIMONIAL SLIDER – Recent Hires -->
+  <section class="ts-section">
+    <style>
+      .ts-section { padding: 70px 0; background: var(--off-white); }
+      .ts-header { text-align: center; margin-bottom: 36px; }
+      .ts-header .section-title { font-size: 1.55rem; font-weight: 800; color: var(--sand-ash); line-height: 1.2; margin-bottom: 14px; letter-spacing: -0.02em; max-width: 720px; margin-left: auto; margin-right: auto; }
+      .ts-header .section-sub { font-size: 0.92rem; color: var(--moss); line-height: 1.6; max-width: 620px; margin: 0 auto; }
+      .ts-slider-wrap { position: relative; max-width: 900px; margin: 32px auto 0; }
+      .ts-track {
+        display: flex; gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none; -ms-overflow-style: none;
+        padding: 6px 16px 28px;
+        justify-content: center;
+      }
+      .ts-track::-webkit-scrollbar { display: none; }
+      .ts-card {
+        flex: 0 0 auto;
+        width: calc(50% - 10px);
+        max-width: 420px;
+        scroll-snap-align: center;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 14px 40px rgba(14, 16, 18, 0.18);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+        display: flex; flex-direction: column;
+      }
+      .ts-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(255, 107, 26, 0.18); }
+      .ts-card-photo {
+        width: 100%; aspect-ratio: 4/3;
+        overflow: hidden;
+        background: #e8e8e3;
+        position: relative;
+      }
+      .ts-card-photo img {
+        width: 100%; height: 100%; display: block;
+        object-fit: cover; object-position: center;
+      }
+      .ts-card-badge {
+        position: absolute; top: 14px; left: 14px;
+        background: var(--moss-dark); color: white;
+        font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 6px 12px; border-radius: 999px;
+        backdrop-filter: blur(8px);
+      }
+      .ts-card-body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+      .ts-card-firma { font-size: 1.02rem; font-weight: 700; color: var(--sand-ash); line-height: 1.3; margin-bottom: 8px; }
+      .ts-card-stelle { font-size: 0.88rem; color: var(--moss); line-height: 1.5; margin-bottom: auto; }
+      .ts-card-stelle strong { color: var(--poison-green); font-weight: 700; }
+      .ts-card-tag {
+        display: inline-flex; align-items: center; gap: 6px;
+        margin-top: 14px;
+        font-size: 0.72rem; font-weight: 600; color: var(--moss);
+        letter-spacing: 0.04em; text-transform: uppercase;
+      }
+      .ts-card-tag::before {
+        content: ''; width: 6px; height: 6px; border-radius: 50%;
+        background: var(--poison-green);
+      }
+      .ts-arrow {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        width: 52px; height: 52px; border-radius: 50%;
+        background: white; border: none;
+        box-shadow: 0 6px 20px rgba(14, 16, 18, 0.22);
+        font-size: 28px; font-weight: 600; line-height: 1; cursor: pointer;
+        color: var(--poison-green);
+        z-index: 3;
+        display: flex; align-items: center; justify-content: center;
+        transition: all 0.25s ease;
+      }
+      .ts-arrow:hover { background: var(--poison-green); color: white; transform: translateY(-50%) scale(1.06); }
+      .ts-arrow-prev { left: -10px; }
+      .ts-arrow-next { right: -10px; }
+      .ts-dots {
+        display: flex; justify-content: center; gap: 8px;
+        margin-top: 18px;
+      }
+      .ts-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: rgba(31, 31, 31, 0.22); border: none; padding: 0;
+        cursor: pointer; transition: all 0.3s ease;
+      }
+      .ts-dot.active { background: var(--poison-green); width: 28px; border-radius: 4px; }
+      @media (max-width: 640px) {
+        .ts-section { padding: 50px 0; }
+        .ts-track { justify-content: flex-start; padding: 6px 10vw 24px; }
+        .ts-card { width: 78%; border-radius: 16px; }
+        .ts-arrow { display: none; }
+        .ts-header .section-title { font-size: 1.35rem; padding: 0 16px; }
+      }
+    </style>
+    <div class="container">
+      <div class="ts-header reveal">
+        <div class="section-label" style="justify-content:center;"><span class="section-label-line"></span> Erfolgsmeldungen aus dem letzten Quartal</div>
+        <h2 class="section-title">Diese Betriebe haben &uuml;ber GreenCareers schon eingestellt</h2>
+        <p class="section-sub">Erfolgreiche Stellenbesetzungen aus unserem Netzwerk &mdash; Stra&szlig;en-, Tief- und Kanalbau.</p>
+      </div>
+      <div class="ts-slider-wrap" id="ts-slider-tiefbau">
+        <button class="ts-arrow ts-arrow-prev" aria-label="Vorheriges Testimonial">&lsaquo;</button>
+        <div class="ts-track" id="ts-track-tiefbau">
+
+          <div class="ts-card">
+            <div class="ts-card-photo">
+              <span class="ts-card-badge">Neue Einstellung</span>
+              <img src="cust-photos/01-hirzle.jpg" alt="Hirzle Bauunternehmen GmbH" loading="lazy">
+            </div>
+            <div class="ts-card-body">
+              <div class="ts-card-firma">Hirzle Bauunternehmen GmbH</div>
+              <div class="ts-card-stelle"><strong>Facharbeiter</strong> Stra&szlig;en- &amp; Tiefbau eingestellt</div>
+              <span class="ts-card-tag">Tiefbau</span>
+            </div>
+          </div>
+
+          <div class="ts-card">
+            <div class="ts-card-photo">
+              <span class="ts-card-badge">Neue Einstellung</span>
+              <img src="cust-photos/02-habers.jpg" alt="Innovative Dienstleistungen Habers GmbH" loading="lazy">
+            </div>
+            <div class="ts-card-body">
+              <div class="ts-card-firma">Innovative Dienstleistungen Habers GmbH</div>
+              <div class="ts-card-stelle"><strong>1 Facharbeiter Tiefbau</strong> eingestellt</div>
+              <span class="ts-card-tag">Tiefbau</span>
+            </div>
+          </div>
+
+        </div>
+        <button class="ts-arrow ts-arrow-next" aria-label="N&auml;chstes Testimonial">&rsaquo;</button>
+      </div>
+      <div class="ts-dots" id="ts-dots-tiefbau"></div>
+    </div>
+    <script>
+    (function() {
+      const track = document.getElementById('ts-track-tiefbau');
+      if (!track) return;
+      const dotsBox = document.getElementById('ts-dots-tiefbau');
+      const wrap = document.getElementById('ts-slider-tiefbau');
+      const slides = Array.from(track.querySelectorAll('.ts-card'));
+      const prevBtn = wrap.querySelector('.ts-arrow-prev');
+      const nextBtn = wrap.querySelector('.ts-arrow-next');
+
+      let current = 0;
+      let timer = null;
+      const ROTATE_MS = 6000;
+
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'ts-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i, true));
+        dotsBox.appendChild(d);
+      });
+      const dots = Array.from(dotsBox.querySelectorAll('.ts-dot'));
+
+      function goTo(i, userTriggered) {
+        current = ((i % slides.length) + slides.length) % slides.length;
+        const slide = slides[current];
+        const offset = slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2;
+        track.scrollTo({ left: offset, behavior: 'smooth' });
+        dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+        if (userTriggered) reset();
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      prevBtn && prevBtn.addEventListener('click', () => { prev(); reset(); });
+      nextBtn && nextBtn.addEventListener('click', () => { next(); reset(); });
+
+      function start() { if (slides.length > 1) timer = setInterval(next, ROTATE_MS); }
+      function reset() { clearInterval(timer); start(); }
+      start();
+
+      wrap.addEventListener('mouseenter', () => clearInterval(timer));
+      wrap.addEventListener('mouseleave', start);
+      wrap.addEventListener('touchstart', () => clearInterval(timer), { passive: true });
+      wrap.addEventListener('touchend', () => { clearTimeout(timer); setTimeout(start, 4000); }, { passive: true });
+
+      let scrollDebounce;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollDebounce);
+        scrollDebounce = setTimeout(() => {
+          const center = track.scrollLeft + track.clientWidth / 2;
+          let closest = 0, minDist = Infinity;
+          slides.forEach((s, i) => {
+            const slideCenter = s.offsetLeft + s.clientWidth / 2;
+            const dist = Math.abs(center - slideCenter);
+            if (dist < minDist) { minDist = dist; closest = i; }
+          });
+          if (closest !== current) {
+            current = closest;
+            dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+          }
+        }, 120);
+      });
+    })();
+    </script>
+  </section>
+
   <!-- REVIEWS – mit Carousel -->
   <section class="section-reviews">
     <div class="container">
@@ -2046,6 +2248,94 @@
       } catch(e) { /* silent */ }
     }
 
+    // =====================================================
+    // META-EVENT-TRACKING (Pixel + CAPI mit Dedup)
+    //
+    // Drei Qualitätsstufen, je Person genau einmal:
+    //   Lead                 → E-Mail eingetragen (Step 6)
+    //   CompleteRegistration → Formular vollständig abgesendet
+    //   Schedule             → Beratungstermin angefragt (Final-Submit)
+    //
+    // Pixel (Browser) und CAPI (Server, via Dashboard-Endpoint)
+    // teilen sich pro Event dieselbe event_id → Meta dedupliziert.
+    // =====================================================
+    const LEAD_EVENT_ENDPOINT = 'https://gc-tracking-dashboard.vercel.app/api/tracking/lead-event';
+
+    function getCookie(name) {
+      try {
+        const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return m ? decodeURIComponent(m.pop()) : '';
+      } catch(e) { return ''; }
+    }
+    function getFbp() { return getCookie('_fbp'); }
+    function getFbc() {
+      const c = getCookie('_fbc');
+      if (c) return c;
+      // Fallback: aus fbclid rekonstruieren (Meta-Format fb.1.<ts>.<fbclid>)
+      if (trackingParams.fbclid) return 'fb.1.' + Date.now() + '.' + trackingParams.fbclid;
+      return '';
+    }
+
+    // Stabile event_id pro Stufe + Session (übersteht Reload → Meta dedupliziert)
+    function getEventId(stage) {
+      const key = 'gc_eid_' + stage + '_' + LANDINGPAGE_ID;
+      try {
+        let id = localStorage.getItem(key);
+        if (!id) {
+          id = uuidv4();
+          localStorage.setItem(key, id);
+        }
+        return id;
+      } catch(e) { return uuidv4(); }
+    }
+
+    // Server-Event ans Dashboard (sendet CAPI + legt/aktualisiert Lead in Supabase)
+    function sendLeadStageEvent(stage, eventId, extra) {
+      const body = {
+        stage: stage,
+        event_id: eventId,
+        landingpage_id: LANDINGPAGE_ID,
+        session_id: sessionId,
+        email: answers.email,
+        vorname: answers.vorname || '',
+        nachname: answers.nachname || '',
+        unternehmen: answers.unternehmen || '',
+        phone: answers.phone || '',
+        // Quiz-Antworten dieser LP (serverseitig optionale Felder)
+        rolle: answers.rolle || '',
+        mitarbeiter_range: answers.mitarbeiter_range || '',
+        anzahl_fachkraefte: answers.anzahl_fachkraefte || '',
+        dringlichkeit: answers.dringlichkeit || '',
+        plz: answers.plz || '',
+        plz_ort: answers.plz_ort || '',
+        plz_bundesland: answers.plz_bundesland || '',
+        pool_count: answers.pool_count || 0,
+        ...trackingParams,
+        fbp: getFbp(),
+        fbc: getFbc(),
+        page_url: window.location.href,
+        referrer: document.referrer || '',
+        user_agent: navigator.userAgent,
+        ...(extra || {})
+      };
+      // Test-Support: ?tracking_debug=1 → Dry-Run (keine Writes/CAPI),
+      // ?test_capi=CODE → Events in Meta Test-Events-Tab
+      try {
+        const p = new URLSearchParams(window.location.search);
+        if (p.get('tracking_debug') === '1') body.dry_run = true;
+        if (p.get('test_capi')) body.test_event_code = p.get('test_capi');
+      } catch(e) {}
+      try {
+        fetch(LEAD_EVENT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          keepalive: true,
+          credentials: 'omit'
+        }).catch(() => { /* Tracking darf den Funnel nie brechen */ });
+      } catch(e) { /* silent */ }
+    }
+
     // ----- LP-View beim ersten Laden tracken
     trackFunnelEvent('lp_view', null);
 
@@ -2360,11 +2650,20 @@
       step6Error.classList.remove('active');
       answers.email = email;
 
-      try {
-        if (typeof fbq === 'function') {
-          fbq('track', 'Lead', { content_name: 'Beratungs-Anfrage E-Mail erhalten', landingpage: LANDINGPAGE_ID });
-        }
-      } catch(e) {}
+      // Stufe 1: "Lead" — E-Mail liegt vor. Pixel + CAPI mit gemeinsamer
+      // event_id (Dedup). Lead landet sofort in Supabase (lead_stage=email_only).
+      if (!window.__gcLeadFired) {
+        window.__gcLeadFired = true;
+        const leadEventId = getEventId('lead');
+        try {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead',
+              { content_name: 'Beratungs-Anfrage E-Mail erhalten', landingpage: LANDINGPAGE_ID },
+              { eventID: leadEventId });
+          }
+        } catch(e) {}
+        sendLeadStageEvent('lead', leadEventId);
+      }
       trackFunnelEvent('slide_view', '6_email_submitted');
 
       showSlide(7, 7);
@@ -2528,14 +2827,31 @@
 
         // Tracking: Submit-Erfolg
         trackFunnelEvent('submit_success', null);
+        // Stufe 2: "CompleteRegistration" — Formular vollständig
+        // (E-Mail + Name + Firma + Telefon). Pixel + CAPI mit gemeinsamer
+        // event_id; Dashboard stuft die Lead-Zeile auf 'complete' hoch.
+        const crEventId = getEventId('complete_registration');
         try {
           if (typeof fbq === 'function') {
-            fbq('track', 'CompleteRegistration', {
-              content_name: 'Beratungs-Anfrage komplett',
-              landingpage: LANDINGPAGE_ID
-            });
+            fbq('track', 'CompleteRegistration',
+              { content_name: 'Beratungs-Anfrage komplett', landingpage: LANDINGPAGE_ID },
+              { eventID: crEventId });
           }
         } catch(e) {}
+        sendLeadStageEvent('complete_registration', crEventId);
+
+        // Stufe 3: "Schedule" — der Submit IST die Terminanfrage.
+        // Eigene event_id; die Danke-Seite feuert denselben Schedule-Pixel
+        // mit derselben event_id (localStorage) → Meta dedupliziert.
+        const schEventId = getEventId('appointment');
+        try {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Schedule',
+              { content_name: 'Beratungsgespräch angefragt', landingpage: LANDINGPAGE_ID },
+              { eventID: schEventId });
+          }
+        } catch(e) {}
+        sendLeadStageEvent('appointment', schEventId, { source_page: LANDINGPAGE_ID + '-submit' });
 
         // Inline Success → Redirect
         document.getElementById('lead-form').style.display = 'none';
